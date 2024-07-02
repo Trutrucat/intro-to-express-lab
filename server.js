@@ -26,7 +26,7 @@ const collectibles = [
     { name: 'vintage 1970s yogurt SOLD AS-IS', price: 0.99 }
   ];
 app.get('/collectibles/:index', (req, res) => {
-    if(idx(0)){
+    if(collectibles(index = 0)){
         res.send('So, you want the shiny ball? For 5.95 it can be yours!')
     }
 })
