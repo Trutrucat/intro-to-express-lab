@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require('express')
 
 const app = express()
 
@@ -20,15 +20,22 @@ app.get('/roll/:number', (req, res) => {
         res.send(`You rolled a ${roll}.`)}
 })
 
-const collectibles = [
-    { name: 'shiny ball', price: 5.95 },
-    { name: 'autographed picture of a dog', price: 10 },
-    { name: 'vintage 1970s yogurt SOLD AS-IS', price: 0.99 }
-  ];
-app.get('/collectibles/:index', (req, res) => {
-    if(collectibles(index = 0)){
-        res.send('So, you want the shiny ball? For 5.95 it can be yours!')
-    }
+ const collectibles = [
+     { name: 'shiny ball', price: 5.95 },
+     { name: 'autographed picture of a dog', price: 10 },     
+     { name: 'vintage 1970s yogurt SOLD AS-IS', price: 0.99 }
+   ];
+
+   app.get('/collectibles/:index', (req, res) => {
+    const index = req.params.index
+    const collectible = collectibles[index]
+     if(!collectible) {
+        res.send('This item is not yet in stock. Check back soon!')
+
+        const response = `So, you want the ${collectible.name}? For ${collectible.price}, it can be yours!`
+        res.send(response)}
+
+        
 })
 
 app.listen(3000, () => {
