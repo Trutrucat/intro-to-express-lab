@@ -27,13 +27,12 @@ app.get('/roll/:number', (req, res) => {
    ];
 
    app.get('/collectibles/:index', (req, res) => {
-    const index = req.params.index
-    const collectible = collectibles[index]
-     if(!collectible) {
-        res.send('This item is not yet in stock. Check back soon!')
-
-        const response = `So, you want the ${collectible.name}? For ${collectible.price}, it can be yours!`
-        res.send(response)}
+    const index = parseInt(req.params.index)
+    
+     if (index >= 0 && index < collectibles.length) {
+        const collectible = collectibles[index]
+        const response = `So you want the ${collectible.name}? For ${collectible.price}, it can be yours!`
+     }
 
         
 })
