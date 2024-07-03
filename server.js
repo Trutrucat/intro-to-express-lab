@@ -49,11 +49,25 @@ const shoes = [
 ];
 
 app.get('/shoes', (req, res) => {
-    if (price < 200) {
-        
-    }
-})
+    const {'min-price': minPrice, 'max-price': maxPrice, type} = req.query
 
+    let filteredShoes = shoes
+    console.log('maxPrice:', maxPrice)
+    console.log('minPrice:', minPrice)
+
+    if (minPrice) {
+        filteredShoes = filteredShoes.filter(shoe => shoe.price >= parseInt(minPrice, 10))
+    }
+    if (maxPrice) {
+        filteredShoes = filteredShoes.filter(shoe => shoe.price <= parseInt(maxPrice, 10))
+
+    }
+    if(type) {
+        filteredShoes = filteredShoes.filter(shoe => shoe.type === type)
+    }
+    res.json(filteredShoes)
+
+})
 
 app.listen(3000, () => {
     console.log('I am listening')
