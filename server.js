@@ -2,11 +2,9 @@ const express = require('express')
 
 const app = express()
 
-const username = 'Mathilda'
-
 
 app.get('/greeting/:username', (req, res) => {
-    res.send(`What a delight it is to see you once more, ${username}`)
+    res.send(`What a delight it is to see you once more, ${req.params.username}`)
 })
 
 app.get('/roll/:number', (req, res) => {
